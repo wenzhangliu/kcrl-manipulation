@@ -1,0 +1,272 @@
+<mujoco model="empty_floor">
+  <compiler angle="radian" />
+
+  <option timestep="0.001" gravity="0 0 -9.81" integrator="implicitfast" impratio="10">
+      <flag contact="enable" energy="enable" gravity="enable" />
+  </option>
+
+  <visual>
+    <rgba haze="0.15 0.25 0.35 1" />
+    <global azimuth="120" elevation="-20" />
+  </visual>
+
+
+
+
+
+  <asset>
+    <mesh name="table" file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/scenes/../objects/table/table.STL" scale="1.0 1.0 0.66" />
+
+    <texture type="skybox" builtin="gradient" rgb1="0.68 0.68 0.68" rgb2="0.3 0.3 0.3" width="512" height="3072" />
+    <texture name="groundplane" type="2d" builtin="checker" mark="edge" rgb1="0.68 0.68 0.68" rgb2="0.8 0.8 0.8" markrgb="0.68 0.68 0.68" width="300" height="300" />
+    <material name="groundplane" reflectance="0.2" shininess="0.0" specular="0.0" texrepeat="5 5" texture="groundplane" texuniform="true" />
+
+    <texture name="wood" type="2d" file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/commons/../assets/textures/wood.png" />
+    <material name="wood" texture="wood" texrepeat="1 1" texuniform="true" rgba="0.68 0.68 0.68 1" />
+  <texture file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/commons/../assets/textures/white-marble.png" type="2d" name="aluminum" />
+        <material name="cylinder" reflectance="0.5" texrepeat="5 5" texture="aluminum" texuniform="true" />
+    <material class="ur5e" name="black" rgba="0 0.3922 0 1" />
+    <material class="ur5e" name="jointgray" rgba="0.9608 0.9608 0.9608 1" />
+    <material class="ur5e" name="linkgray" rgba="0.9608 0.9608 0.9608 1" />
+    <material class="ur5e" name="urblue" rgba="0 0.3922 0 1" />
+
+    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/base_0.obj" />
+    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/base_1.obj" />
+    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/shoulder_0.obj" />
+    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/shoulder_1.obj" />
+    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/shoulder_2.obj" />
+    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/upperarm_0.obj" />
+    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/upperarm_1.obj" />
+    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/upperarm_2.obj" />
+    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/upperarm_3.obj" />
+    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/forearm_0.obj" />
+    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/forearm_1.obj" />
+    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/forearm_2.obj" />
+    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/forearm_3.obj" />
+    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/wrist1_0.obj" />
+    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/wrist1_1.obj" />
+    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/wrist1_2.obj" />
+    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/wrist2_0.obj" />
+    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/wrist2_1.obj" />
+    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/wrist2_2.obj" />
+    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/wrist3.obj" />
+  <mesh name="0_robotiq-2f-base" file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/grippers/robotiq_gripper/meshes/robotiq-2f-base.stl" scale="0.001 0.001 0.001" />
+        <mesh name="0_robotiq-2f-driver" file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/grippers/robotiq_gripper/meshes/robotiq-2f-driver.stl" scale="0.001 0.001 0.001" />
+        <mesh name="0_robotiq-2f-coupler" file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/grippers/robotiq_gripper/meshes/robotiq-2f-coupler.stl" scale="0.001 0.001 0.001" />
+        <mesh name="0_robotiq-2f-follower" file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/grippers/robotiq_gripper/meshes/robotiq-2f-follower.stl" scale="0.001 0.001 0.001" />
+        <mesh name="0_robotiq-2f-pad" file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/grippers/robotiq_gripper/meshes/robotiq-2f-pad.stl" scale="0.001 0.001 0.001" />
+        <mesh name="0_robotiq-2f-spring_link" file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/grippers/robotiq_gripper/meshes/robotiq-2f-spring_link.stl" scale="0.001 0.001 0.001" />
+    <texture file="textures/boxtype.png" type="2d" name="carton" />
+        <material name="carton" reflectance="0.1" texrepeat="1 1" texture="carton" texuniform="false" />
+    </asset>
+
+  <worldbody>
+    
+    <geom condim="3" material="groundplane" name="floor" pos="0 0 0" size="3 3 .125" type="plane" />
+    <light diffuse=".8 .8 .8" dir="0 -.15 -1" directional="false" pos="1 1 8.0" specular="0.3 0.3 0.3" castshadow="false" />
+    <light diffuse=".8 .8 .8" dir="0 -.15 -1" directional="false" pos="-3. -3. 8.0" specular="0.3 0.3 0.3" castshadow="false" />
+    
+    <camera mode="fixed" name="frontview" pos="1.6 0 1.45" quat="0.56 0.43 0.43 0.56" />
+    
+    <camera mode="fixed" name="birdview" pos="-0.2 0 3.0" quat="0.7071 0 0 0.7071" />
+    
+    <camera mode="fixed" name="agentview" pos="0.5 0 1.35" quat="0.653 0.271 0.271 0.653" />
+    
+    <camera mode="fixed" name="sideview" pos="-0.05651774593317116 1.2761224129427358 1.4879572214102434" quat="0.009905065491771751 0.006877963156909582 0.5912228352893879 0.806418094001364" />
+
+    <body name="table" pos="1 0.6 0" euler="0 0 1.57">
+        <include file="objects/table/table.xml" />
+    </body>
+
+  <body name="0_mount_base_link" pos="1.09 0.30 0.72" quat="-1 0 0 1">
+      		<geom pos="0 0 -0.14" size="0.07 0.14" type="cylinder" friction="1 0.005 0.0001" name="0_basecylinder_collision" />
+      		<geom pos="0 0 -0.14" material="cylinder" size="0.072 0.16" type="cylinder" conaffinity="0" contype="0" />
+        <body name="0_base" quat="1 0 0 1" childclass="ur5e">
+      <inertial mass="4.0" pos="0 0 0" diaginertia="0.00443333156 0.00443333156 0.0072" />
+      <geom mesh="base_0" material="black" class="visual" />
+      <geom mesh="base_1" material="jointgray" class="visual" />
+      <body name="0_shoulder_link" pos="0 0 0.163">
+        <inertial mass="3.7" pos="0 0 0" diaginertia="0.0102675 0.0102675 0.00666" />
+        <joint name="0_shoulder_pan_joint" class="size3" axis="0 0 1" />
+        <geom mesh="shoulder_0" material="urblue" class="visual" />
+        <geom mesh="shoulder_1" material="black" class="visual" />
+        <geom mesh="shoulder_2" material="jointgray" class="visual" />
+        <geom class="collision" size="0.06 0.06" pos="0 0 -0.04" />
+        <body name="0_upper_arm_link" pos="0 0.138 0" quat="1 0 1 0">
+          <inertial mass="8.393" pos="0 0 0.2125" diaginertia="0.133886 0.133886 0.0151074" />
+          <joint name="0_shoulder_lift_joint" class="size3" />
+          <geom mesh="upperarm_0" material="linkgray" class="visual" />
+          <geom mesh="upperarm_1" material="black" class="visual" />
+          <geom mesh="upperarm_2" material="jointgray" class="visual" />
+          <geom mesh="upperarm_3" material="urblue" class="visual" />
+          <geom class="collision" pos="0 -0.04 0" quat="1 1 0 0" size="0.06 0.06" />
+          <geom class="collision" size="0.05 0.2" pos="0 0 0.2" />
+          <body name="0_forearm_link" pos="0 -0.131 0.425">
+            <inertial mass="2.275" pos="0 0 0.196" diaginertia="0.0311796 0.0311796 0.004095" />
+            <joint name="0_elbow_joint" class="size3_limited" />
+            <geom mesh="forearm_0" material="urblue" class="visual" />
+            <geom mesh="forearm_1" material="linkgray" class="visual" />
+            <geom mesh="forearm_2" material="black" class="visual" />
+            <geom mesh="forearm_3" material="jointgray" class="visual" />
+            <geom class="collision" pos="0 0.08 0" quat="1 1 0 0" size="0.055 0.06" />
+            <geom class="collision" size="0.038 0.19" pos="0 0 0.2" />
+            <body name="0_wrist_1_link" pos="0 0 0.392" quat="1 0 1 0">
+              <inertial mass="1.219" pos="0 0.127 0" diaginertia="0.0025599 0.0025599 0.0021942" />
+              <joint name="0_wrist_1_joint" class="size1" />
+              <geom mesh="wrist1_0" material="black" class="visual" />
+              <geom mesh="wrist1_1" material="urblue" class="visual" />
+              <geom mesh="wrist1_2" material="jointgray" class="visual" />
+              <geom class="collision" pos="0 0.05 0" quat="1 1 0 0" size="0.04 0.07" />
+              <body name="0_wrist_2_link" pos="0 0.127 0">
+                <inertial mass="1.219" pos="0 0 0.1" diaginertia="0.0025599 0.0025599 0.0021942" />
+                <joint name="0_wrist_2_joint" axis="0 0 1" class="size1" />
+                <geom mesh="wrist2_0" material="black" class="visual" />
+                <geom mesh="wrist2_1" material="urblue" class="visual" />
+                <geom mesh="wrist2_2" material="jointgray" class="visual" />
+                <geom class="collision" size="0.04 0.06" pos="0 0 0.04" />
+                <geom class="collision" pos="0 0.02 0.1" quat="1 1 0 0" size="0.04 0.04" />
+                <body name="0_wrist_3_link" pos="0 0 0.1">
+                  <inertial mass="0.1889" pos="0 0.0771683 0" quat="1 0 0 1" diaginertia="0.000132134 9.90863e-05 9.90863e-05" />
+                  <joint name="0_wrist_3_joint" class="size1" />
+                  <geom material="linkgray" mesh="wrist3" class="visual" />
+                  <geom class="eef_collision" pos="0 0.08 0" quat="1 1 0 0" size="0.04 0.02" />
+                  <body name="0_attachment" pos="0 0.1 0" quat="-1 1 0 0">
+                      <site name="0_attachment_site" />
+                  <body name="0_end_effector" pos="0 0 0" quat="1 0 0 0" childclass="robotiq2f85">
+            <geom mesh="0_robotiq-2f-base" />
+            <geom class="robotiq_col" type="mesh" mesh="0_robotiq-2f-base" euler="0 0 0" />
+            <site name="0_grip_site" pos="0 0 0.14" size="0.005" rgba="1 0 0 0.5" type="sphere" group="1" />
+            <body name="0_robotiq_2f_85_right_driver" pos="0 0.0306011 0.054904">
+                <inertial pos="0 0.01575 0.05295" quat="0.738425 0.674335 0 0" mass="0.0002" diaginertia="0.00043212 0.000431866 0.000360253" />
+                <joint name="0_robotiq_2f_85_right_driver_joint" range="0 0.834" />
+                <geom mesh="0_robotiq-2f-driver" />
+                <geom pos="0 0.0315 -0.0041" mesh="0_robotiq-2f-coupler" />
+                <geom class="robotiq_col" pos="0 0.0315 -0.0041" type="mesh" mesh="0_robotiq-2f-coupler" />
+                <body name="0_robotiq_2f_85_right_follower" pos="0 0.0376 0.043">
+                    <inertial pos="0 0 0.055" quat="0.707107 0.707107 0 0" mass="0.0002" diaginertia="0.000380833 0.000380833 0.00036" />
+                    <joint name="0_robotiq_2f_85_right_follower_joint" range="-0.837 0" />
+                    <geom mesh="0_robotiq-2f-follower" />
+                    <geom type="mesh" mesh="0_robotiq-2f-pad" rgba="1 1 1 1" />
+                    <geom class="robotiq_pad_col" type="box" size=".01 .003 .0175" pos="0 -.021 .031" />
+                    <geom class="robotiq_pad_col" type="capsule" size=".004 .008" pos="0 -.019 .045" axisangle="0.1 1 0 1.57" />
+                    <geom class="robotiq_pad_col" type="capsule" size=".004 .008" pos="0 -.019 .036" axisangle="0.1 1 0 1.57" />
+                    <geom class="robotiq_pad_col" type="capsule" size=".004 .008" pos="0 -.019 .028" axisangle="0.1 1 0 1.57" />
+                    <geom class="robotiq_pad_col" type="capsule" size=".004 .008" pos="0 -.019 .019" axisangle="0.1 1 0 1.57" />
+                    <geom class="robotiq_pad_col" type="capsule" size=".004 .008" pos="0 -.019 .045" axisangle="-.1 1 0 1.57" />
+                    <geom class="robotiq_pad_col" type="capsule" size=".004 .008" pos="0 -.019 .036" axisangle="-.1 1 0 1.57" />
+                    <geom class="robotiq_pad_col" type="capsule" size=".004 .008" pos="0 -.019 .028" axisangle="-.1 1 0 1.57" />
+                    <geom class="robotiq_pad_col" type="capsule" size=".004 .008" pos="0 -.019 .019" axisangle="-.1 1 0 1.57" />
+                </body>
+            </body>
+            <body name="0_robotiq_2f_85_right_spring_link" pos="0 0.012 0.0614">
+                <inertial pos="0 0 0.055" quat="0.707107 0.707107 0 0" mass="0.0001" diaginertia="0.000190833 0.000190833 0.00018" />
+                <joint name="0_robotiq_2f_85_right_spring_link_joint" range="-2.96706 2.96706" />
+                <geom mesh="0_robotiq-2f-spring_link" />
+                <geom class="robotiq_col" type="box" size=".0125 .007 .014" pos="0 .032 .0365" euler="-.7 0 0" />
+                <geom class="robotiq_col" type="box" size=".0180 .007 .022" pos="0 .012 0.013" euler="-.7 0 0" />
+                <site type="sphere" size="0.01" pos="0 0.037 0.043" rgba="1 0 0 1" group="3" />
+            </body>
+            <body name="0_robotiq_2f_85_left_driver" pos="0 -0.0306011 0.054904" quat="0 0 0 1">
+                <inertial pos="0 0.01575 0.05295" quat="0.738425 0.674335 0 0" mass="0.0002" diaginertia="0.00043212 0.000431866 0.000360253" />
+                <joint name="0_robotiq_2f_85_left_driver_joint" range="0 0.834" />
+                <geom mesh="0_robotiq-2f-driver" />
+                <geom pos="0 0.0315 -0.0041" mesh="0_robotiq-2f-coupler" />
+                <geom class="robotiq_col" pos="0 0.0315 -0.0041" type="mesh" mesh="0_robotiq-2f-coupler" />
+                <body name="0_robotiq_2f_85_left_follower" pos="0 0.0376 0.043">
+                    <inertial pos="0 0 0.055" quat="0.707107 0.707107 0 0" mass="0.0002" diaginertia="0.000380833 0.000380833 0.00036" />
+                    <joint name="0_robotiq_2f_85_left_follower_joint" range="-0.837 0" />
+                    <geom mesh="0_robotiq-2f-follower" />
+                    <geom type="mesh" mesh="0_robotiq-2f-pad" rgba="1 1 1 1" />
+                    <geom class="robotiq_pad_col" type="box" size=".01 .003 .0175" pos="0 -.021 .031" />
+                    <geom class="robotiq_pad_col" type="capsule" size=".004 .008" pos="0 -.019 .045" axisangle="0.1 1 0 1.57" />
+                    <geom class="robotiq_pad_col" type="capsule" size=".004 .008" pos="0 -.019 .036" axisangle="0.1 1 0 1.57" />
+                    <geom class="robotiq_pad_col" type="capsule" size=".004 .008" pos="0 -.019 .028" axisangle="0.1 1 0 1.57" />
+                    <geom class="robotiq_pad_col" type="capsule" size=".004 .008" pos="0 -.019 .019" axisangle="0.1 1 0 1.57" />
+                    <geom class="robotiq_pad_col" type="capsule" size=".004 .008" pos="0 -.019 .045" axisangle="-.1 1 0 1.57" />
+                    <geom class="robotiq_pad_col" type="capsule" size=".004 .008" pos="0 -.019 .036" axisangle="-.1 1 0 1.57" />
+                    <geom class="robotiq_pad_col" type="capsule" size=".004 .008" pos="0 -.019 .028" axisangle="-.1 1 0 1.57" />
+                    <geom class="robotiq_pad_col" type="capsule" size=".004 .008" pos="0 -.019 .019" axisangle="-.1 1 0 1.57" />
+                </body>
+            </body>
+            <body name="0_robotiq_2f_85_left_spring_link" pos="0 -0.012 0.0614" quat="0 0 0 1">
+                    <inertial pos="0 0 0.055" quat="0.707107 0.707107 0 0" mass="0.0001" diaginertia="0.000190833 0.000190833 0.00018" />
+                    <joint name="0_robotiq_2f_85_left_spring_link_joint" range="-2.96706 2.96706" />
+                    <geom mesh="0_robotiq-2f-spring_link" />
+                    <geom class="robotiq_col" type="box" size=".0125 .007 .014" pos="0 .032 .0365" euler="-.7 0 0" />
+                    <geom class="robotiq_col" type="box" size=".0180 .007 .022" pos="0 .012 0.013" euler="-.7 0 0" />
+                    <site type="sphere" size="0.01" pos="0 0.037 0.043" rgba="1 0 0 1" group="3" />
+                </body>
+        </body>
+   </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </body>
+    <body name="carton" pos="1.1 -0.3 0.49">
+            
+
+            <geom name="carton_front_collision" pos="0 0.2 0" size="0.15 0.003 0.06" material="carton" type="box" conaffinity="1" condim="3" contype="1" group="1" mass="0.02" />
+            <geom name="carton_back_collision" pos="0 -0.2 0" size="0.15 0.003 0.06" material="carton" type="box" conaffinity="1" condim="3" contype="1" group="1" mass="0.02" />
+            <geom name="carton_left_collision" pos="0.15 0 0" size="0.003 0.2 0.06" material="carton" type="box" conaffinity="1" condim="3" contype="1" group="1" mass="0.02" />
+            <geom name="carton_right_collision" pos="-0.15 0 0" size="0.003 0.2 0.06" material="carton" type="box" conaffinity="1" condim="3" contype="1" group="1" mass="0.02" />
+            <geom name="carton_bottom_collision" pos="0 0 -0.06" size="0.15 0.2 0.003" material="carton" type="box" conaffinity="1" condim="3" contype="1" group="1" mass="0.02" />
+        </body>
+    <body name="green_block" pos="1.6 0.43 0.45">
+            <joint name="green_block:joint" type="free" damping="0.1" frictionloss="0" />
+            <geom name="green_block" size="0.02 0.02 0.02" rgba="0 1 0 1" type="box" conaffinity="0" contype="0" group="1" />
+            <geom name="green_block_collision" size="0.02 0.02 0.02" type="box" conaffinity="1" contype="1" condim="4" group="4" mass="0.02" friction="1 1 1" solimp="1 1 1" solref="0.00001 1" />
+            <site name="green_block" pos="0 0 0" size="0.02 0.02 0.02" rgba="0 1 0 0.5" type="sphere" />
+        </body>
+    </worldbody>
+<actuator><motor ctrllimited="true" ctrlrange="-150.0 150.0" joint="0_shoulder_pan_joint" name="0_actuator1" />
+        <motor ctrllimited="true" ctrlrange="-150.0 150.0" joint="0_shoulder_lift_joint" name="0_actuator2" />
+        <motor ctrllimited="true" ctrlrange="-150.0 150.0" joint="0_elbow_joint" name="0_actuator3" />
+        <motor ctrllimited="true" ctrlrange="-28.0 28.0" joint="0_wrist_1_joint" name="0_actuator4" />
+        <motor ctrllimited="true" ctrlrange="-28.0 28.0" joint="0_wrist_2_joint" name="0_actuator5" />
+        <motor ctrllimited="true" ctrlrange="-28.0 28.0" joint="0_wrist_3_joint" name="0_actuator6" />
+    <position name="0_robotiq_2f_85" joint="0_robotiq_2f_85_right_driver_joint" kp="5" ctrlrange="0 1" ctrllimited="true" />
+    </actuator><default><default class="ur5e">
+      <material specular="0.5" shininess="0.25" />
+      <joint axis="0 1 0" range="-6.28319 6.28319" armature="0.1" />
+      <general gaintype="fixed" biastype="affine" ctrlrange="-6.2831 6.2831" gainprm="2000" biasprm="0 -2000 -400" forcerange="-150 150" />
+      <default class="size3">
+        <default class="size3_limited">
+          <joint range="-3.1415 3.1415" />
+          <general ctrlrange="-3.1415 3.1415" />
+        </default>
+      </default>
+      <default class="size1">
+        <general gainprm="500" biasprm="0 -500 -100" forcerange="-28 28" />
+      </default>
+      <default class="visual">
+        <geom type="mesh" contype="0" conaffinity="0" group="2" />
+      </default>
+      <default class="collision">
+        <geom type="capsule" group="3" />
+        <default class="eef_collision">
+          <geom type="cylinder" />
+        </default>
+      </default>
+      <site size="0.001" rgba="0.5 0.5 0.5 0.3" group="4" />
+    </default>
+  <default class="robotiq2f85">
+            <joint damping=".1" pos="0 0 0" axis="1 0 0" limited="true" />
+            <geom rgba=".1 .1 .1 1" type="mesh" contype="0" conaffinity="0" group="1" />
+            <default class="robotiq_col">
+                <geom rgba=".3 .4 .5 1" type="mesh" contype="1" conaffinity="0" group="3" />
+            </default>
+            <default class="robotiq_pad_col">
+                <geom rgba=".3 .4 .5 1" type="mesh" contype="1" conaffinity="1" group="3" condim="4" friction="1 1 1" solref="0.001 1" solimp="1 0.99 0.001" />
+            </default>
+        </default>
+    </default><contact><exclude body1="0_robotiq_2f_85_right_spring_link" body2="0_robotiq_2f_85_right_follower" />
+        <exclude body1="0_robotiq_2f_85_left_spring_link" body2="0_robotiq_2f_85_left_follower" />
+    </contact><sensor><jointpos name="0_robotiq_2f_85" joint="0_robotiq_2f_85_right_driver_joint" />
+    </sensor><equality><connect anchor="0 0.037 0.043" body1="0_robotiq_2f_85_right_spring_link" body2="0_robotiq_2f_85_right_follower" name="0_robotiq_2f_85_right" />
+        <connect anchor="0 0.037 0.043" body1="0_robotiq_2f_85_left_spring_link" body2="0_robotiq_2f_85_left_follower" name="0_robotiq_2f_85_left" />
+        <joint joint1="0_robotiq_2f_85_right_driver_joint" joint2="0_robotiq_2f_85_left_driver_joint" />
+    </equality></mujoco>
