@@ -1,11 +1,11 @@
-import time
 import numpy as np
 from robopal.demos.manipulation_tasks.robot_manipulate_dense import ManipulateDenseEnv
 import robopal.commons.transform as T
 from robopal.robots.ur5e import UR5eReach
 
-class ReachHandlingEnv(ManipulateDenseEnv):
 
+class ReachHandlingEnv(ManipulateDenseEnv):
+    """In this task, the goal of the agent is to reach the static object."""
     def __init__(self,
                  task_id=0,
                  robot=UR5eReach,

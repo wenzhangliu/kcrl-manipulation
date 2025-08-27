@@ -5,7 +5,7 @@ from robopal.robots.ur5e import UR5eConveyor1
 
 
 class ConveyorHandlingEnv1(ManipulateDenseEnv):
-
+    """In this task, the agent’s goal is the same as in the static task, but the object moves at a specified speed."""
     def __init__(self,
                  task_id=3,
                  robot=UR5eConveyor1,

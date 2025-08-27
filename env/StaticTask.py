@@ -5,7 +5,8 @@ from robopal.robots.ur5e import UR5eGrasp
 
 
 class StaticHandlingEnv(ManipulateDenseEnv):
-
+    """In this task, the agent must reach the object, grasp and hold it, and finally place it into the box.
+    The object remains static (does not move)."""
     def __init__(self,
                  task_id=2,
                  robot=UR5eGrasp,

@@ -1,61 +1,58 @@
 <mujoco model="empty_floor">
   <compiler angle="radian" />
 
-  <option timestep="0.001" gravity="0 0 -9.81" integrator="implicitfast" impratio="10">
+  <option timestep="0.001" gravity="0 0 -9.81" impratio="10">
       <flag contact="enable" energy="enable" gravity="enable" />
   </option>
-
-  <visual>
-    <rgba haze="0.15 0.25 0.35 1" />
-    <global azimuth="120" elevation="-20" />
-  </visual>
-
-
-
-
-
+  
   <asset>
-    <mesh name="table" file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/scenes/../objects/table/table.STL" scale="1.0 1.0 0.66" />
-
     <texture type="skybox" builtin="gradient" rgb1="0.68 0.68 0.68" rgb2="0.3 0.3 0.3" width="512" height="3072" />
     <texture name="groundplane" type="2d" builtin="checker" mark="edge" rgb1="0.68 0.68 0.68" rgb2="0.8 0.8 0.8" markrgb="0.68 0.68 0.68" width="300" height="300" />
     <material name="groundplane" reflectance="0.2" shininess="0.0" specular="0.0" texrepeat="5 5" texture="groundplane" texuniform="true" />
-
-    <texture name="wood" type="2d" file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/commons/../assets/textures/wood.png" />
-    <material name="wood" texture="wood" texrepeat="1 1" texuniform="true" rgba="0.68 0.68 0.68 1" />
-  <texture file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/commons/../assets/textures/white-marble.png" type="2d" name="aluminum" />
+  <texture file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/commons/../assets/textures/white-marble.png" type="2d" name="aluminum" />
         <material name="cylinder" reflectance="0.5" texrepeat="5 5" texture="aluminum" texuniform="true" />
     <material class="ur5e" name="black" rgba="0 0.3922 0 1" />
     <material class="ur5e" name="jointgray" rgba="0.9608 0.9608 0.9608 1" />
     <material class="ur5e" name="linkgray" rgba="0.9608 0.9608 0.9608 1" />
     <material class="ur5e" name="urblue" rgba="0 0.3922 0 1" />
 
-    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/base_0.obj" />
-    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/base_1.obj" />
-    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/shoulder_0.obj" />
-    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/shoulder_1.obj" />
-    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/shoulder_2.obj" />
-    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/upperarm_0.obj" />
-    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/upperarm_1.obj" />
-    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/upperarm_2.obj" />
-    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/upperarm_3.obj" />
-    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/forearm_0.obj" />
-    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/forearm_1.obj" />
-    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/forearm_2.obj" />
-    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/forearm_3.obj" />
-    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/wrist1_0.obj" />
-    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/wrist1_1.obj" />
-    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/wrist1_2.obj" />
-    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/wrist2_0.obj" />
-    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/wrist2_1.obj" />
-    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/wrist2_2.obj" />
-    <mesh file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/manipulators/UR5e/meshes/wrist3.obj" />
-  <mesh name="0_robotiq-2f-base" file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/grippers/robotiq_gripper/meshes/robotiq-2f-base.stl" scale="0.001 0.001 0.001" />
-        <mesh name="0_robotiq-2f-driver" file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/grippers/robotiq_gripper/meshes/robotiq-2f-driver.stl" scale="0.001 0.001 0.001" />
-        <mesh name="0_robotiq-2f-coupler" file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/grippers/robotiq_gripper/meshes/robotiq-2f-coupler.stl" scale="0.001 0.001 0.001" />
-        <mesh name="0_robotiq-2f-follower" file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/grippers/robotiq_gripper/meshes/robotiq-2f-follower.stl" scale="0.001 0.001 0.001" />
-        <mesh name="0_robotiq-2f-pad" file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/grippers/robotiq_gripper/meshes/robotiq-2f-pad.stl" scale="0.001 0.001 0.001" />
-        <mesh name="0_robotiq-2f-spring_link" file="/home/wzliu/Downloads/Sequential_manipulation-main/robopal/assets/models/grippers/robotiq_gripper/meshes/robotiq-2f-spring_link.stl" scale="0.001 0.001 0.001" />
+    <mesh file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/manipulators/UR5e/meshes/base_0.obj" />
+    <mesh file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/manipulators/UR5e/meshes/base_1.obj" />
+    <mesh file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/manipulators/UR5e/meshes/shoulder_0.obj" />
+    <mesh file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/manipulators/UR5e/meshes/shoulder_1.obj" />
+    <mesh file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/manipulators/UR5e/meshes/shoulder_2.obj" />
+    <mesh file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/manipulators/UR5e/meshes/upperarm_0.obj" />
+    <mesh file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/manipulators/UR5e/meshes/upperarm_1.obj" />
+    <mesh file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/manipulators/UR5e/meshes/upperarm_2.obj" />
+    <mesh file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/manipulators/UR5e/meshes/upperarm_3.obj" />
+    <mesh file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/manipulators/UR5e/meshes/forearm_0.obj" />
+    <mesh file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/manipulators/UR5e/meshes/forearm_1.obj" />
+    <mesh file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/manipulators/UR5e/meshes/forearm_2.obj" />
+    <mesh file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/manipulators/UR5e/meshes/forearm_3.obj" />
+    <mesh file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/manipulators/UR5e/meshes/wrist1_0.obj" />
+    <mesh file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/manipulators/UR5e/meshes/wrist1_1.obj" />
+    <mesh file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/manipulators/UR5e/meshes/wrist1_2.obj" />
+    <mesh file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/manipulators/UR5e/meshes/wrist2_0.obj" />
+    <mesh file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/manipulators/UR5e/meshes/wrist2_1.obj" />
+    <mesh file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/manipulators/UR5e/meshes/wrist2_2.obj" />
+    <mesh file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/manipulators/UR5e/meshes/wrist3.obj" />
+  <mesh name="0_robotiq-2f-base" file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/grippers/robotiq_gripper/meshes/robotiq-2f-base.stl" scale="0.001 0.001 0.001" />
+        <mesh name="0_robotiq-2f-driver" file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/grippers/robotiq_gripper/meshes/robotiq-2f-driver.stl" scale="0.001 0.001 0.001" />
+        <mesh name="0_robotiq-2f-coupler" file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/grippers/robotiq_gripper/meshes/robotiq-2f-coupler.stl" scale="0.001 0.001 0.001" />
+        <mesh name="0_robotiq-2f-follower" file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/grippers/robotiq_gripper/meshes/robotiq-2f-follower.stl" scale="0.001 0.001 0.001" />
+        <mesh name="0_robotiq-2f-pad" file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/grippers/robotiq_gripper/meshes/robotiq-2f-pad.stl" scale="0.001 0.001 0.001" />
+        <mesh name="0_robotiq-2f-spring_link" file="/Users/lwz/Public/--MyPapers/8-RoboticArm/Revision-1/code/kcrl-manipulation/robopal/assets/models/grippers/robotiq_gripper/meshes/robotiq-2f-spring_link.stl" scale="0.001 0.001 0.001" />
+    <texture builtin="flat" name="texgeom" height="32" width="32" rgb1="1 1 1" type="cube" />
+        <texture builtin="flat" name="table_tex1" height="32" width="32" rgb1="1 1 1" type="cube" />--&gt;
+		<texture builtin="flat" name="arm_tex" height="32" width="32" rgb1="1 1 1" type="cube" />
+
+        <texture file="./textures/conveyor.png" type="2d" name="conveyorbelt" />
+        <material name="conveyor" reflectance="0.1" texrepeat="5 5" texture="conveyorbelt" texuniform="true" />
+
+        <material name="table_mat_white" specular="0.2" shininess="0.2" reflectance="0" rgba="1 1 1 1" texture="arm_tex" />
+        <material name="pedestal_mat" specular="0.5" shininess="0.8" reflectance="0" rgba="0.925 0.835 0.655 1" texture="table_tex1" />
+        <material name="block_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.5 0.2 1" texture="texgeom" />
+        <material name="puck_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" texture="texgeom" />
     <texture file="textures/boxtype.png" type="2d" name="carton" />
         <material name="carton" reflectance="0.1" texrepeat="1 1" texture="carton" texuniform="false" />
     </asset>
@@ -73,11 +70,6 @@
     <camera mode="fixed" name="agentview" pos="0.5 0 1.35" quat="0.653 0.271 0.271 0.653" />
     
     <camera mode="fixed" name="sideview" pos="-0.05651774593317116 1.2761224129427358 1.4879572214102434" quat="0.009905065491771751 0.006877963156909582 0.5912228352893879 0.806418094001364" />
-
-    <body name="table" pos="1 0.6 0" euler="0 0 1.57">
-        <include file="objects/table/table.xml" />
-    </body>
-
   <body name="0_mount_base_link" pos="1.09 0.30 0.72" quat="-1 0 0 1">
       		<geom pos="0 0 -0.14" size="0.07 0.14" type="cylinder" friction="1 0.005 0.0001" name="0_basecylinder_collision" />
       		<geom pos="0 0 -0.14" material="cylinder" size="0.072 0.16" type="cylinder" conaffinity="0" contype="0" />
@@ -206,7 +198,21 @@
       </body>
     </body>
   </body>
-    <body name="carton" pos="1.1 -0.3 0.49">
+    <body pos="1.555 0.3 0.4" name="table">
+			<geom name="table" size="0.8 1 0.02" type="box" material="table_mat_white" density="20000" friction="1 0.005 0.0001" />
+		</body>
+
+		<body name="conveyor_floor" pos="1.555 0.3 0.422">
+			<geom name="conveyor_floor" size="0.2 1 0.01" type="plane" density="2000" condim="3" friction="1 1 1" material="conveyor" />
+            <body pos="0 .9 -.005">
+                <geom type="box" rgba="0 0 0 0" size=".2 .5 .01" />
+                <joint name="conveyor" type="slide" pos="0 -10 0" axis="0 1 0" damping="100" range="-5 5" limited="true" />
+            </body>
+		</body>
+		
+		<camera fovy="80" name="third_person" pos="2.10 0.3 1.4" euler="0 0.83 1.57" />
+
+	<body name="carton" pos="1.1 -0.3 0.49">
             
 
             <geom name="carton_front_collision" pos="0 0.2 0" size="0.15 0.003 0.06" material="carton" type="box" conaffinity="1" condim="3" contype="1" group="1" mass="0.02" />
@@ -215,7 +221,7 @@
             <geom name="carton_right_collision" pos="-0.15 0 0" size="0.003 0.2 0.06" material="carton" type="box" conaffinity="1" condim="3" contype="1" group="1" mass="0.02" />
             <geom name="carton_bottom_collision" pos="0 0 -0.06" size="0.15 0.2 0.003" material="carton" type="box" conaffinity="1" condim="3" contype="1" group="1" mass="0.02" />
         </body>
-    <body name="green_block" pos="1.6 0.43 0.45">
+    <body name="green_block" pos="0 0 -10">
             <joint name="green_block:joint" type="free" damping="0.1" frictionloss="0" />
             <geom name="green_block" size="0.02 0.02 0.02" rgba="0 1 0 1" type="box" conaffinity="0" contype="0" group="1" />
             <geom name="green_block_collision" size="0.02 0.02 0.02" type="box" conaffinity="1" contype="1" condim="4" group="4" mass="0.02" friction="1 1 1" solimp="1 1 1" solref="0.00001 1" />
@@ -229,6 +235,7 @@
         <motor ctrllimited="true" ctrlrange="-28.0 28.0" joint="0_wrist_2_joint" name="0_actuator5" />
         <motor ctrllimited="true" ctrlrange="-28.0 28.0" joint="0_wrist_3_joint" name="0_actuator6" />
     <position name="0_robotiq_2f_85" joint="0_robotiq_2f_85_right_driver_joint" kp="5" ctrlrange="0 1" ctrllimited="true" />
+    <general name="conveyor" joint="conveyor" gainprm="0" biasprm="-100000" biastype="affine" />
     </actuator><default><default class="ur5e">
       <material specular="0.5" shininess="0.25" />
       <joint axis="0 1 0" range="-6.28319 6.28319" armature="0.1" />

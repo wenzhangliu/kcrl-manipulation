@@ -13,6 +13,7 @@ models/
 *.sh
 .VSCodeCounter/
 **/__pycache__
+*/__pycache__
 rank_0/
 docs/build
 wandb/
@@ -30,3 +31,5 @@ mnist.npz
 
 *-checkpoint.ipynb
 /.ipynb_checkpoints
+
+/train_backup

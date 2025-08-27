@@ -5,7 +5,7 @@ from robopal.robots.ur5e import UR5eGrasp
 
 
 class GraspHandlingEnv(ManipulateDenseEnv):
-
+    """In this task, the goal of the agent is to first reach the object and then grasp it."""
     def __init__(self,
                  task_id=1,
                  robot=UR5eGrasp,
