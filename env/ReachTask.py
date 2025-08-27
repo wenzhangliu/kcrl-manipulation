@@ -45,8 +45,7 @@ class ReachHandlingEnv(ManipulateDenseEnv):
             terminated = True
         if self.get_body_pos('green_block')[2] < 0.1:
             terminated = True
-        # if self.render_mode == 'human':
-        #     time.sleep(0.1)
+        # self.set_object_pose('green_block:joint', np.array([1.6, 0.7, 0.46, 1.0, 0.0, 0.0, 0.0]))
         return obs, reward, terminated, truncated, info
 
 
@@ -88,7 +87,8 @@ class ReachHandlingEnv(ManipulateDenseEnv):
 
     def reset_object(self):
         random_x_pos = np.random.uniform(1.6, 1.7)
-        self.set_object_pose('green_block:joint', np.array([random_x_pos, 0.3, 0.75, 1.0, 0.0, 0.0, 0.0]))
+        # self.set_object_pose('green_block:joint', np.array([random_x_pos, 0.3, 0.75, 1.0, 0.0, 0.0, 0.0]))
+        self.set_object_pose('green_block:joint', np.array([random_x_pos, 0.3, 0.5, 1.0, 0.0, 0.0, 0.0]))
 
     def compute_rewards(self, info: dict = None, **kwargs):
 

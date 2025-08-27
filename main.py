@@ -6,7 +6,7 @@ from algorithm import SAC, PCSAC, TensorboardCallback
 
 def main():
     parser = argparse.ArgumentParser(description="Running an experiment.")
-    parser.add_argument("--train", type=int, default=1, help="Whether to train the model (default: True).")
+    parser.add_argument("--train", type=int, default=0, help="Whether to train the model (default: True).")
     parser.add_argument("--method", type=str, default="SAC", help="Choose an algorithm (default: SAC).")
     parser.add_argument("--task", type=str, default="Reaching", help="Choose a task (default: Reaching).")
     parser.add_argument("--render-mode", type=str, default=None, help="The render mode (default: None)")

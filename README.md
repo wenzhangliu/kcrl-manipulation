@@ -1,4 +1,4 @@
-# Deep Reinforcement Learning for Robotic Arm with Sequential Tasks
+# Overcoming Catastrophic Forgetting in Robotic Manipulation via Knowledge-Compositional Reinforcement Learning
 ## Requirements
 ### Preparation
 

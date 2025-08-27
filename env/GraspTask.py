@@ -82,8 +82,10 @@ class GraspHandlingEnv(ManipulateDenseEnv):
         return {'is_success': self._is_success(self.get_body_pos('green_block'), self.get_body_pos('carton'), th=0.02)}
 
     def reset_object(self):
-        random_x_pos = np.random.uniform(1.6, 1.75)
-        self.set_object_pose('green_block:joint', np.array([random_x_pos, 0.3, 0.45, 1.0, 0.0, 0.0, 0.0]))
+        # random_x_pos = np.random.uniform(1.6, 1.75)
+        # self.set_object_pose('green_block:joint', np.array([random_x_pos, 0.3, 0.45, 1.0, 0.0, 0.0, 0.0]))
+        random_x_pos = np.random.uniform(1.6, 1.7)
+        self.set_object_pose('green_block:joint', np.array([random_x_pos, 0.3, 0.5, 1.0, 0.0, 0.0, 0.0]))
 
     def compute_rewards(self, info: dict = None, **kwargs):
         gripper_pos = self.get_site_pos('0_grip_site')

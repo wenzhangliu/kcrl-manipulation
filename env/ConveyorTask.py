@@ -81,7 +81,8 @@ class ConveyorHandlingEnv1(ManipulateDenseEnv):
 
     def reset_object(self):
         random_x_pos = np.random.uniform(1.45, 1.65)
-        self.set_object_pose('green_block:joint', np.array([random_x_pos, 1.2, 0.45, 1.0, 0.0, 0.0, 0.0]))
+        self.set_object_pose('green_block:joint', np.array([random_x_pos, 1.2, 0.5, 1.0, 0.0, 0.0, 0.0]))
+        # self.set_object_pose('green_block:joint', np.array([random_x_pos, 1.2, 0.45, 1.0, 0.0, 0.0, 0.0]))
 
     def compute_rewards(self, info: dict = None, **kwargs):
         cube2carton = self.goal_distance(self.get_body_pos('green_block'), self.get_body_pos('carton'))
