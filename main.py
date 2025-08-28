@@ -10,7 +10,7 @@ def main():
     parser.add_argument("--method", type=str, default="SAC", help="Choose an algorithm (default: SAC).")
     parser.add_argument("--task", type=str, default="Reaching", help="Choose a task (default: Reaching).")
     parser.add_argument("--render-mode", type=str, default=None, help="The render mode (default: None)")
-    parser.add_argument("--iterations", type=int, default=2e5, help="The total training iterations.")
+    parser.add_argument("--iterations", type=int, default=1e6, help="The total training iterations.")
     parser.add_argument("--test-iterations", type=int, default=1e6, help="The iterations for testing.")
     args = parser.parse_args()
 
@@ -25,6 +25,11 @@ def main():
             env,
             verbose=1,
             tensorboard_log=log_dir)
+        if args.task == "Grasping":
+            model.load("log/Reaching/SAC/Final.zip")
+        if args.task == "Placing":
+            model.load("log/Grasping/SAC/Final.zip")
+
     elif args.method == "PCSAC":
         model = PCSAC(
             env=env,
@@ -36,8 +41,8 @@ def main():
             use_sde=False,
             tensorboard_log=log_dir,
         )
+
     elif args.method == "MTSAC":
-        log_dir = "log/GraspTask/MTSAC"
         model = PCSAC(
             env=env,
             num_tasks=3,
@@ -57,7 +62,7 @@ def main():
         model.save(os.path.join(log_dir, "Final"))
     else:
         # Test the model
-        model = SAC.load(os.path.join(log_dir, f"Final"), env=env)  # f"model_saved/policy_51200"
+        model = SAC.load(os.path.join(log_dir, f"Final.zip"), env=env)  # f"model_saved/policy_51200"
         obs, info = env.reset()
         for i in range(int(args.test_iterations)):
             action, _states = model.predict(obs)
