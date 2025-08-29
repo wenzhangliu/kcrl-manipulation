@@ -1,7 +1,7 @@
 import os
 import argparse
-from env import make_env
-from algorithm import SAC, KCRL, MTSAC, TensorboardCallback
+from env import make_env, NumerTasks
+from algorithm import *
 
 
 def main():
@@ -17,6 +17,7 @@ def main():
     # create environments
     render_mode = args.render_mode if args.train else 'human'
     env = make_env(args.task, render_mode=render_mode)
+    num_tasks = NumerTasks[args.task]
 
     log_dir = f"log/{args.task}/{args.method}"
     if args.method == "SAC":
@@ -43,12 +44,6 @@ def main():
         )
 
     elif args.method == "MTSAC":
-        if args.task == "Grasping":
-            num_tasks = 2
-        elif args.task == "Placing":
-            num_tasks = 3
-        else:
-            num_tasks = 1
         model = MTSAC(
             'MlpPolicy',
             env=env,
@@ -63,6 +58,19 @@ def main():
             verbose=1,
             tensorboard_log=log_dir,
         )
+
+    elif args.method == "PACO":
+        model = PACO(
+            env=env,
+            num_tasks=num_tasks,
+            num_param_sets=5,
+            learning_rate=3e-4,
+            tau=0.005,
+            gamma=0.99,
+            use_sde=False,
+            tensorboard_log=log_dir,
+        )
+
     else:
         raise NotImplementedError
 

@@ -12,6 +12,13 @@ RegistryEnvs = {
     "MovingConveyor": ConveyorHandlingEnv1,
 }
 
+NumerTasks = {
+    "Reaching": 1,
+    "Grasping": 2,
+    "Placing": 3,
+    "MovingConveyor": 3,
+}
+
 
 def make_env(env_name, **kwargs):
     env = RegistryEnvs[env_name](**kwargs)
