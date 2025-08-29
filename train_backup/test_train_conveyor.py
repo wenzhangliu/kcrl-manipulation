@@ -1,4 +1,4 @@
-from algorithm.pcsac import PCSAC
+from algorithm.kcrl import PCSAC
 from stable_baselines3.common.callbacks import BaseCallback
 from env.ConveyorTask import ConveyorHandlingEnv1 as ConveyorHandlingEnv
 from robopal.commons.gym_wrapper import GymWrapper

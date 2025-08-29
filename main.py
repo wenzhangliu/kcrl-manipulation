@@ -1,14 +1,14 @@
 import os
 import argparse
 from env import make_env
-from algorithm import SAC, PCSAC, TensorboardCallback
+from algorithm import SAC, KCRL, MTSAC, TensorboardCallback
 
 
 def main():
     parser = argparse.ArgumentParser(description="Running an experiment.")
-    parser.add_argument("--train", type=int, default=0, help="Whether to train the model (default: True).")
-    parser.add_argument("--method", type=str, default="SAC", help="Choose an algorithm (default: SAC).")
-    parser.add_argument("--task", type=str, default="Reaching", help="Choose a task (default: Reaching).")
+    parser.add_argument("--train", type=int, default=1, help="Whether to train the model (default: True).")
+    parser.add_argument("--method", type=str, default="MTSAC", help="Choose an algorithm (default: SAC).")
+    parser.add_argument("--task", type=str, default="Grasping", help="Choose a task (default: Reaching).")
     parser.add_argument("--render-mode", type=str, default=None, help="The render mode (default: None)")
     parser.add_argument("--iterations", type=int, default=1e6, help="The total training iterations.")
     parser.add_argument("--test-iterations", type=int, default=1e6, help="The iterations for testing.")
@@ -30,8 +30,8 @@ def main():
         if args.task == "Placing":
             model.load("log/Grasping/SAC/Final.zip")
 
-    elif args.method == "PCSAC":
-        model = PCSAC(
+    elif args.method == "KCRL":
+        model = KCRL(
             env=env,
             num_tasks=2,
             num_param_sets=5,
@@ -43,14 +43,24 @@ def main():
         )
 
     elif args.method == "MTSAC":
-        model = PCSAC(
+        if args.task == "Grasping":
+            num_tasks = 2
+        elif args.task == "Placing":
+            num_tasks = 3
+        else:
+            num_tasks = 1
+        model = MTSAC(
+            'MlpPolicy',
             env=env,
-            num_tasks=3,
-            num_param_sets=5,
+            num_tasks=num_tasks,
+            ent_coef="auto",
             learning_rate=3e-4,
+            batch_size=256,
             tau=0.005,
             gamma=0.99,
-            use_sde=False,
+            train_freq=1,
+            gradient_steps=1,
+            verbose=1,
             tensorboard_log=log_dir,
         )
     else:

@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="KCRL" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="KCRL(mjpython)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="KCRL" project-jdk-type="Python SDK" />
 </project>

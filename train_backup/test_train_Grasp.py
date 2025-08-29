@@ -1,5 +1,5 @@
 import os
-from algorithm.pcsac import PCSAC
+from algorithm.kcrl import PCSAC
 from stable_baselines3 import SAC
 from stable_baselines3.common.callbacks import BaseCallback
 from env.GraspTask import GraspHandlingEnv

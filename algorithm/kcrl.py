@@ -40,7 +40,7 @@ class TaskEncodingNetwork(nn.Module):
         return self.mlp(emb)
 
 
-class PCSAC(BasePolicy):
+class KCRL(BasePolicy):
 
     def __init__(self,
                  env,

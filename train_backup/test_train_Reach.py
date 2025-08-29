@@ -1,7 +1,7 @@
 from stable_baselines3.common.callbacks import BaseCallback
 from env.ReachTask import ReachHandlingEnv
 from robopal.commons.gym_wrapper import GymWrapper
-from algorithm.pcsac import PCSAC
+from algorithm.kcrl import PCSAC
 import os
 
 TRAIN = 1
