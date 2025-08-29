@@ -108,7 +108,7 @@ class MTSAC(SAC):
             return x.float()
         # Vector observation
         if self.task_id_pos == "tail":
-            return obs[:, -self.num_tasks:].float()  # 需环境观测包含任务ID
+            return obs[:, -self.num_tasks:].float()  # 需环境观测包含任务ID（修改环境）
         elif self.task_id_pos == "head":
             return obs[:, :self.num_tasks].float()
         raise ValueError("Unknown task_id_pos, expected 'tail' or 'head'.")
