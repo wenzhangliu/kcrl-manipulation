@@ -158,8 +158,8 @@ class KCRL(BasePolicy):
             actions = actions.squeeze(0)
         if actions.size(-1) != self.action_space.shape[0]:
             raise ValueError(f"Expected action dimension to be {self.action_space.shape[0]}, but got {actions.size(-1)}.")
-        return actions.detach(), {
-            "comp_weights": comp_weights.detach()
+        return actions, {
+            "comp_weights": comp_weights
         }
 
     def set_training_mode(self, mode: bool) -> None:
@@ -205,7 +205,7 @@ class KCRL(BasePolicy):
         actions_pred, _ = self.forward(obs, task_ids)
         q1 = self._q_forward(obs, actions_pred, self.critic1, comp_weights)
         actor_loss = -q1.mean()
-        actor_loss.requires_grad = True
+        # actor_loss.requires_grad = True
         self.actor_optimizer.zero_grad()
         actor_loss.backward()
         torch.nn.utils.clip_grad_norm_(self.actor.parameters(), max_norm=0.5)
@@ -302,6 +302,7 @@ class KCRL(BasePolicy):
         ent_coef_losses = []
         episode_rewards = 0.0
         episode_length = 0
+        num_episodes = 0
 
         for step in range(total_timesteps):
             with torch.no_grad():
@@ -321,10 +322,10 @@ class KCRL(BasePolicy):
             if done:
                 self.logger.record("rollout/ep_rew_mean", episode_rewards)
                 self.logger.record("rollout/ep_rew_len", episode_length)
-                self.logger.dump(step=self.num_timesteps)
+                # self.logger.dump(step=self.num_timesteps)
                 episode_rewards = 0.0
                 episode_length = 0
-
+                num_episodes += 1
 
             infos = [info] if isinstance(info, dict) else info
 
@@ -341,28 +342,27 @@ class KCRL(BasePolicy):
                 if callback.on_step() is False:
                     break
 
-            if step % log_interval == 0:
-                actor_loss_mean = np.mean(actor_losses) if actor_losses else 0
-                critic_loss_mean = np.mean(critic_losses) if critic_losses else 0
-                ent_coef_mean = np.mean(ent_coefs) if ent_coefs else 0
-                ent_coef_loss_mean = np.mean(ent_coef_losses) if ent_coef_losses else 0
-
-                self.logger.record("train/n_updates", self._n_updates)
-                self.logger.record("train/ent_coef", ent_coef_mean)
-                self.logger.record("train/actor_loss", actor_loss_mean)
-                self.logger.record("train/critic_loss", critic_loss_mean)
-                if len(ent_coef_losses) > 0:
-                    self.logger.record("train/ent_coef_loss", ent_coef_loss_mean)
-
-                self.logger.dump(step)
-
-                actor_losses = []
-                critic_losses = []
-                ent_coefs = []
-                ent_coef_losses = []
-
             if done:
                 obs, _ = self.env.reset()
+                if num_episodes % log_interval == 0:
+                    actor_loss_mean = np.mean(actor_losses) if actor_losses else 0
+                    critic_loss_mean = np.mean(critic_losses) if critic_losses else 0
+                    ent_coef_mean = np.mean(ent_coefs) if ent_coefs else 0
+                    ent_coef_loss_mean = np.mean(ent_coef_losses) if ent_coef_losses else 0
+
+                    self.logger.record("train/n_updates", self._n_updates)
+                    self.logger.record("train/ent_coef", ent_coef_mean)
+                    self.logger.record("train/actor_loss", actor_loss_mean)
+                    self.logger.record("train/critic_loss", critic_loss_mean)
+                    if len(ent_coef_losses) > 0:
+                        self.logger.record("train/ent_coef_loss", ent_coef_loss_mean)
+
+                    self.logger.dump(step)
+
+                    actor_losses = []
+                    critic_losses = []
+                    ent_coefs = []
+                    ent_coef_losses = []
             else:
                 obs = next_obs
 

@@ -7,7 +7,7 @@ from algorithm import *
 def main():
     parser = argparse.ArgumentParser(description="Running an experiment.")
     parser.add_argument("--train", type=int, default=1, help="Whether to train the model (default: True).")
-    parser.add_argument("--method", type=str, default="SAC", help="Choose an algorithm (default: SAC).")
+    parser.add_argument("--method", type=str, default="PACO", help="Choose an algorithm (default: SAC).")
     parser.add_argument("--task", type=str, default="Grasping", help="Choose a task (default: Reaching).")
     parser.add_argument("--render-mode", type=str, default=None, help="The render mode (default: None)")
     parser.add_argument("--iterations", type=int, default=1e6, help="The total training iterations.")
@@ -67,7 +67,7 @@ def main():
             learning_rate=3e-4,
             tau=0.005,
             gamma=0.99,
-            use_sde=False,
+            # use_sde=False,
             tensorboard_log=log_dir,
         )
 
