@@ -300,6 +300,8 @@ class KCRL(BasePolicy):
         critic_losses = []
         ent_coefs = []
         ent_coef_losses = []
+        episode_rewards = 0.0
+        episode_length = 0
 
         for step in range(total_timesteps):
             with torch.no_grad():
@@ -313,7 +315,16 @@ class KCRL(BasePolicy):
 
 
             next_obs, reward, terminated, truncated, info = self.env.step(action)
+            episode_rewards += reward
+            episode_length += 1
             done = terminated or truncated
+            if done:
+                self.logger.record("rollout/ep_rew_mean", episode_rewards)
+                self.logger.record("rollout/ep_rew_len", episode_length)
+                self.logger.dump(step=self.num_timesteps)
+                episode_rewards = 0.0
+                episode_length = 0
+
 
             infos = [info] if isinstance(info, dict) else info
 
